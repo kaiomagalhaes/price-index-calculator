@@ -1,8 +1,12 @@
+[![Build Status](https://semaphoreci.com/api/v1/projects/4be61186-8121-4019-8e89-d6e63b8411b1/415099/badge.svg)](https://semaphoreci.com/kaiomagalhaes/price-index-calculator)      
+
 # Price::Index::Calculator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/price/index/calculator`. To experiment with that code, run `bin/console` for an interactive prompt.
+With this gem you will be able to calculate the price index according to the following formulas:
 
-TODO: Delete this and the text above, and describe your gem
+Laspeyres
+
+And more soon!
 
 ## Installation
 
