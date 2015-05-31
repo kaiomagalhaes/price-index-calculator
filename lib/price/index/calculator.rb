@@ -20,6 +20,7 @@ module Price
       def price_index_list(products)
        return [] if products.nil? || products.empty?
       end
+
     end
   end
 end
