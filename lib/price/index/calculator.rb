@@ -11,14 +11,32 @@ module Price
           new_product[:price_index] = 100
           return new_product
         end
-       
-        index = (new_product[:amount] * new_product[:price]) / (old_product[:amount] * old_product[:price])
-        new_product[:price_index] = index * 100
+
+        validade_product new_product
+        validade_product old_product
+
+        new_product[:price_index] = calc_index_value(new_product, old_product) 
         new_product
       end
 
       def price_index_list(products)
        return [] if products.nil? || products.empty?
+      end
+
+      private
+
+      def calc_index_value(new_product, old_product)
+         (old_product[:amount] * new_product[:price]) / (old_product[:amount] * old_product[:price]) * 100
+      end
+
+      def validade_product(product)
+        raise_illegal_argument_exception if product[:amount].nil?
+        raise_illegal_argument_exception if product[:price].nil?
+      end
+
+      def raise_illegal_argument_exception(field)
+        raise ArgumenError
+
       end
 
     end

@@ -39,13 +39,39 @@ describe Price::Index::Calculator do
       expect(calculator.price_index new_product , nil).to eq(new_product_with_price_index)
     end
 
-     it 'With valid products return correct value' do
+    it 'With valid products return correct value' do
       new_product = {amount: 2, price: 3.0}
       old_product = {amount: 2, price: 2.0}
       new_product_with_price_index = new_product.clone
       new_product_with_price_index[:price_index] = 150
       expect(calculator.price_index new_product , old_product).to eq(new_product_with_price_index)
     end
+
+    it 'With products with diferent amounts will use the amount of the old' do
+      new_product = {amount: 10, price: 3.0}
+      old_product = {amount: 2, price: 2.0}
+      new_product_with_price_index = new_product.clone
+      new_product_with_price_index[:price_index] = 150
+      expect(calculator.price_index new_product , old_product).to eq(new_product_with_price_index)
+    end
+
+    it 'With products with no value for :price will raise an exception' do
+      valid_product = {amount: 10, price: 20}
+      invalid_product = {amount: 2,}
+
+      expect{calculator.price_index invalid_product, valid_product}.to raise_error(ArgumentError)
+      expect{calculator.price_index valid_product,invalid_product }.to raise_error(ArgumentError)
+    end
+
+    it 'With products with no value for :amount will raise an exception' do
+      valid_product = {amount: 10, price: 20}
+      invalid_product = {price: 5.0,}
+
+      expect{calculator.price_index invalid_product, valid_product}.to raise_error(ArgumentError)
+      expect{calculator.price_index valid_product,invalid_product }.to raise_error(ArgumentError)
+    end
+
+
 
   end
 end
