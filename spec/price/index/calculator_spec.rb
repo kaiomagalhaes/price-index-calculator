@@ -3,28 +3,34 @@ require 'spec_helper'
 describe Price::Index::Calculator do
 
   let(:calculator) do 
-      obj = Object.new
-      obj.extend Price::Index::Calculator
-      obj
+    obj = Object.new
+    obj.extend Price::Index::Calculator
+    obj
   end
 
   it 'has a version number' do
     expect(Price::Index::Calculator::VERSION).not_to be nil
   end
 
-  describe "test price_index_list" do
-    it 'With empty list return empty list' do
-      expect(calculator.price_index_list []).to eq([])
+  describe "test price_index_list with" do
+
+    describe "invalid value returns empty list" do
+      it 'empty input' do
+        expect(calculator.price_index_list []).to eq([])
+      end
+
+      it 'nil input' do
+        expect(calculator.price_index_list nil).to eq([])
+      end
     end
 
-    it 'With nil list return empty list' do
-      expect(calculator.price_index_list nil).to eq([])
+    describe "valid value returns valid list" do
+      it 'Valid list return correct list of products with index' do
+        skip
+        expect(calculator.price_index_list nil).to eq([])
+      end
     end
 
-    it 'With valid list return correct list of products with index' do
-     skip 
-      expect(calculator.price_index_list nil).to eq([])
-    end
   end
 
   describe "test price_index"do
