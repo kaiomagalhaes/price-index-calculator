@@ -2,17 +2,22 @@ module Price
   module Index
     module Laspeyres
 
-      def calc products
-        return [] if products.nil? || products.empty?
+      def calc data
+        return [] if data.nil? || data.empty?
+        validate data
+
       end
 
       private
 
-      def raise_illegal_argument_exception(field)
-        raise ArgumenError
-
+      def validate data
+        raise_illegal_argument_exception("period") if data[:period] == nil
+        puts data
       end
 
+      def raise_illegal_argument_exception(field)
+        raise ArgumentError.new("The field #{field} is empty")
+      end
 
     end
   end
