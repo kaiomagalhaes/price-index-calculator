@@ -1,0 +1,36 @@
+{
+  "period":[
+    {
+      "data":"01/01/2015",
+      "total_amout": 9.65,
+      "products":[
+        {
+          "name":"Tomato",
+          "amount": 1,
+          "price": 2.25
+        },
+        {
+          "name":"Letucce",
+          "amount": 7,
+          "price":7.4
+        }
+      ]
+    },
+    {
+      "data":"01/02/2015",
+      "total_amout": 10.25,
+      "products":[
+        {
+          "name":"Tomato",
+          "amount": 1,
+          "price": 3.25
+        },
+        {
+          "name":"Letucce",
+          "amount": 1,
+          "price":7.0
+        }
+      ]
+    }
+  ]
+}
