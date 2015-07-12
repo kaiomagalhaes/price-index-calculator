@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'json'
+
 
 describe Price::Index::Laspeyres do
 
@@ -10,10 +10,6 @@ describe Price::Index::Laspeyres do
   end
 
   let(:data) do
-    file = File.open("spec/resources/laspeyres.json", "rb")
-    contents = file.read
-    file.close
-    JSON.parse(contents)
   end
 
   describe "test price_index_list with" do
@@ -34,6 +30,9 @@ describe Price::Index::Laspeyres do
 
     describe "valid value returns valid list" do
       it 'Valid list return correct list of products with index' do
+        data = get_json("spec/resources/data.json")
+        data_with_laspeyres_index = get_json("spec/resources/data.json")
+        expect(calculator.calc data).to eq(data_with_laspeyres_index)
       end
     end
 
