@@ -1,8 +1,8 @@
 {
   "period":[
     {
-      "data":"01/01/2015",
-      "total_amout": 9.65,
+      "data":"01/03/2015",
+      "total_price": 9.65,
       "products":[
         {
           "name":"Tomato",
@@ -18,7 +18,7 @@
     },
     {
       "data":"01/02/2015",
-      "total_amout": 10.25,
+      "total_price": 10.25,
       "products":[
         {
           "name":"Tomato",
