@@ -31,10 +31,8 @@ describe Price::Index::Laspeyres do
     describe "valid value returns valid list" do
       it 'Valid list return correct list of products with index' do
         data = get_json("spec/resources/data.json")
-        data_with_laspeyres_index = get_json("spec/resources/data.json")
-        comparison = calculator.calc(data) == data_with_laspeyres_index
-        puts comparison
-        expect(comparison).to be_eql(true)
+        data_with_laspeyres_index = get_json("spec/resources/laspeyres_index.json")
+        expect(calculator.calc(data)).to be_eql(data_with_laspeyres_index)
       end
     end
 
