@@ -13,11 +13,20 @@ module Price
       def calculate_price_index data
         periods = data["period"]
         order! periods
-        puts calculate_base_price_index periods
+        base_index_products = calculate_base_price_index periods
+
         periods.collect do |period|
-          # puts period
+          products = period["products"]
+          products.collect do |product|
+            base_product = base_index_products.select do |base_product|
+              base_product[:name] == product["name"]
+            end
+            product["index"] ||= {}
+            product_price = product["price"].to_f
+            puts base_product
+            puts base_product
+          end
         end
-        data
       end
 
       def calculate_base_price_index periods
@@ -25,10 +34,11 @@ module Price
         products_first_month = first_month_data["products"]
         total_price = first_month_data["total_price"].to_f
         products_first_month.collect do |product|
-          product_name = product["name"]
-          product_price = product["price"].to_f
-          base_index = (product_price * 100 ) / total_price
-          {name: product_name, base_price_index: base_index}
+          name = product["name"]
+          price = product["price"].to_f
+          amount = product["amount"].to_i
+          base_index = (price * amount * 100 ) / total_price
+          {name: name, base_price_index: base_index, price: price}
         end
       end
 

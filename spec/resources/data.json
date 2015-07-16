@@ -1,7 +1,7 @@
 {
   "period":[
     {
-      "data":"01/03/2015",
+      "data":"01/01/2015",
       "total_price": 9.65,
       "products":[
         {
@@ -11,7 +11,7 @@
         },
         {
           "name":"Letucce",
-          "amount": 7,
+          "amount": 1,
           "price":7.4
         }
       ]
