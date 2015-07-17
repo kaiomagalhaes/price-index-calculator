@@ -1,8 +1,10 @@
+require "price/index/product"
 module Price
   module Index
     module Laspeyres
 
       def calc data
+        binding.pry
         return [] if data.nil? || data.empty?
         validate data, "periods"
         calculate_price_index data.clone
