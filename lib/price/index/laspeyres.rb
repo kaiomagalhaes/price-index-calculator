@@ -4,7 +4,7 @@ module Price
 
       def calc data
         return [] if data.nil? || data.empty?
-        validate data
+        validate data, "periods"
         calculate_price_index data.clone
       end
 
@@ -13,18 +13,18 @@ module Price
       def calculate_price_index data
         periods = data["period"]
         order! periods
-        base_index_products = calculate_base_price_index periods
+        base_products = calculate_base_price_index periods
 
         periods.collect do |period|
           products = period["products"]
           products.collect do |product|
-            base_product = base_index_products.select do |base_product|
-              base_product[:name] == product["name"]
-            end
+            base_product = base_products.find{ |base_product| base_product[:name] == product["name"]}
+            binding.pry
             product["index"] ||= {}
             product_price = product["price"].to_f
-            puts base_product
-            puts base_product
+            product["index"]["laspeyre"] = product_price / base_product[:price] * base_product[:base_price_index]
+            puts product
+            product
           end
         end
       end
@@ -52,8 +52,8 @@ module Price
         Date.strptime(str_date,"%d/%m/%Y")
       end
 
-      def validate data
-        raise_illegal_argument_exception("period") if data["period"] == nil
+      def validate data, field
+        raise_illegal_argument_exception(field) if data[field] == nil
       end
 
       def raise_illegal_argument_exception(field)
