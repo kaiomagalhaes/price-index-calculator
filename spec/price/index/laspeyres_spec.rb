@@ -1,12 +1,9 @@
 require 'spec_helper'
 
-
-describe Price::Index::Laspeyres do
+describe Laspeyres do
 
   let(:calculator) do
-    obj = Object.new
-    obj.extend Price::Index::Laspeyres
-    obj
+   Laspeyres.new
   end
 
   let(:data) do
